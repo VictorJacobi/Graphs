@@ -4,12 +4,15 @@ import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 @StackedApp(routes: [
+  // AdaptiveRoute(
+  //   page: SplashScreen,
+  //   // initial: true,
+  // ),
+  AdaptiveRoute(page: HomeScreen,initial: true,),
   AdaptiveRoute(
     page: SplashScreen,
-    initial: true,
+    // initial: true,
   ),
-  AdaptiveRoute(page: HomeScreen),
-
   // AdaptiveRoute(page: SendToFounders),
   // AdaptiveRoute(page: SendMoney),
   // AdaptiveRoute(page: TransactionSummary),
