@@ -24,10 +24,10 @@ TextStyle kHeading2Style = GoogleFonts.inter(
   fontSize: 16,
   color: const Color(0xFF1D2939),
 );
-const TextStyle kHeadlineStyle = TextStyle(
-  fontFamily: 'Avenir',
-  fontWeight: FontWeight.w800,
-  fontSize: 24,
+ TextStyle kHeadlineStyle = GoogleFonts.rubik(
+  // fontFamily: 'Avenir',
+  fontWeight: FontWeight.w700,
+  fontSize: 32,
   color: Colors.black,
 );
 const TextStyle kHeading1Style = TextStyle(
@@ -42,9 +42,9 @@ const TextStyle kSubHeadingStyle = TextStyle(
   fontSize: 16,
   color: Colors.black,
 );
-TextStyle kBodyStyle = GoogleFonts.inter(
+TextStyle kBodyStyle = GoogleFonts.rubik(
   // fontFamily: 'Raleway',
   fontWeight: FontWeight.w400,
   fontSize: 10,
-  color: const Color(0xFF515F7F),
+  color: const Color(0xFF111111),
 );

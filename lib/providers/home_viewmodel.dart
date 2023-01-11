@@ -1,9 +1,13 @@
 // import 'package:flutter/material.dart';
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'dart:developer';
+import 'package:graph_implementation/models/graph_data_model.dart';
 
 class HomeViewModel extends BaseViewModel {
+  List<GraphData> graphDataList = [];
   // String? otp;
   // // final TextEditingController otpController = TextEditingController();
   // bool? isRegistering;
@@ -20,8 +24,11 @@ class HomeViewModel extends BaseViewModel {
   // }
   Future<void> readData() async {
     // try{
-      var data = await rootBundle.loadString('assets/sample.json');
-      log(data);
+      var data = await rootBundle.loadString('asset/json_file/sample.json');
+      var result = json.decode(data);
+      graphDataList = result.map<GraphData>((value)=> GraphData.fromJson(value)).toList();
+      log('${graphDataList[0]}');
+      notifyListeners();
     // }catch(e){
     //   log('Error: $e');
     // }
