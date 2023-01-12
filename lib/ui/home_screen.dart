@@ -88,8 +88,8 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 32.0),
+                    Padding( 
+                      padding: const EdgeInsets.only(bottom: 32.0),  
                       child: CustomText.headline('${model.graphDataList.map<String>((e) => e.lga??'').toSet().length}'),
                     )
                     // Image.asset(GraphAssets.blueGraph),
