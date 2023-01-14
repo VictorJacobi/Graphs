@@ -92,7 +92,8 @@ void getLgaLength(lga,List myMessage){
 class HomeViewModel extends BaseViewModel {
   bool loadPage = false;
   List<GraphData> graphDataList = [];
-  List<CategoryBarChartModel> chartData = [
+  List<CategoryBarChartModel> occupationTypeChartData = [];
+  List<CategoryBarChartModel> widowsAgeAtBereavementChartData = [
     // CategoryBarChartModel(category: 'Owo', y: 7),
     // CategoryBarChartModel(category: 'Ose', y: 7),
     // CategoryBarChartModel(category: 'Ondo West', y: 6),
@@ -139,8 +140,8 @@ class HomeViewModel extends BaseViewModel {
       // log('chartDataLength: ${chartData[0].y}');
 
       // log('${graphDataList[0]}');
-    chartData = await myPort(graphDataList)??[];
-    log('${chartData.length}');
+    widowsAgeAtBereavementChartData = await myPort(graphDataList)??[];
+    log('${widowsAgeAtBereavementChartData.length}');
       loadPage = false;
       notifyListeners();
     // }catch(e){

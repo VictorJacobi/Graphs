@@ -162,7 +162,6 @@ class HomeScreen extends StatelessWidget {
                             child: RotatedBox(
                               quarterTurns: -3,
                               child: BarChart(
-
                                 BarChartData(
                                   borderData: FlBorderData(show: false,),
                                   // alignment: BarChartAlignment.center,
@@ -185,27 +184,22 @@ class HomeScreen extends StatelessWidget {
                                           // log('${chartData[0]}');
                                           return RotatedBox(
                                               quarterTurns: -5,
-                                              child: Text('${model.chartData[value.toInt()].category} - ',textAlign: TextAlign.end,
+                                              child: Text('${model.widowsAgeAtBereavementChartData[value.toInt()].category} - ',textAlign: TextAlign.end,
                                                 style: const TextStyle(
                                                   fontSize: 12,
                                                 ),));
                                         },showTitles: true)),
-                                    //   leftTitles: AxisTitles(
-                                    //   // axisNameWidget: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
-                                    // sideTitles: SideTitles(getTitlesWidget: (value,meta) => RotatedBox(
-                                    //    quarterTurns: -5,
-                                    //   child: Text('$value')),showTitles: true)),
                                     show: true,
                                   ),
                                   // maxY: 6,
                                   // minY: 1,
                                   // baselineY: 0,
-                                  barGroups: model.chartData.map<BarChartGroupData>((e) =>  BarChartGroupData(x: model.chartData.indexOf(e),
+                                  barGroups: model.widowsAgeAtBereavementChartData.map<BarChartGroupData>((e) =>  BarChartGroupData(x: model.widowsAgeAtBereavementChartData.indexOf(e),
                                     barRods: [
                                       BarChartRodData(
                                           backDrawRodData: BackgroundBarChartRodData(
                                               color: const Color(0xFF602BF8).withOpacity(0.1),
-                                              fromY: getGreatestValue(model.chartData).toDouble(),
+                                              fromY: getGreatestValue(model.widowsAgeAtBereavementChartData).toDouble(),
                                               show: true),
                                           toY: e.y.toDouble(),
                                           width: 10,
@@ -213,19 +207,6 @@ class HomeScreen extends StatelessWidget {
                                           borderRadius: BorderRadius.circular(0)),
                                     ],
                                   ),).toList(),
-
-                                  // barGroups: [
-                                  //   BarChartGroupData (x: 0, barRods: [
-                                  //     BarChartRodData(toY: chartData[0].x.toDouble()),
-                                  //   ]),
-                                  //   BarChartGroupData(x: 1,barRods: [
-                                  //     BarChartRodData(toY: chartData[1].x.toDouble()),
-                                  //   ]),
-                                  //   BarChartGroupData(x: 2,barRods: [
-                                  //     BarChartRodData(toY: chartData[2].x.toDouble()),
-                                  //   ]),
-                                  // ]
-                                  // read about it in the BarChartData section
                                 ),
                                 swapAnimationDuration: const Duration(milliseconds: 150), // Optional
                                 swapAnimationCurve: Curves.linear, // Optional
@@ -236,7 +217,77 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                )
+                ),
+                   SizedBox(
+                  height: 650,
+                  width: MediaQuery.of(context).size.width-68,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(5.43),
+                    elevation: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24,),
+                      child: Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 16.0,top: 24),
+                            child: Text('WIDOWS AGE AT SPOUSE BEREAVEMENT'),
+                          ),
+                          Expanded(
+                            child: BarChart(
+                              BarChartData(
+                                borderData: FlBorderData(show: false,),
+                                // alignment: BarChartAlignment.center,
+                                // groupsSpace: 30,
+                                titlesData: FlTitlesData(
+                                  rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                  topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                  leftTitles: AxisTitles(sideTitles: SideTitles(interval: 92.4,reservedSize: 90,getTitlesWidget: (value,meta) {
+                                    // log('${chartData[0]}');
+                                    return Text('${value.toInt()}',textAlign: TextAlign.end,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                      ),);
+                                  },showTitles: true)),
+                                  bottomTitles: AxisTitles(
+                                    // axisNameWidget: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
+                                      sideTitles: SideTitles(reservedSize: 100,getTitlesWidget: (value,meta) {
+                                        // log('${chartData[0]}');
+                                        return RotatedBox(
+                                            quarterTurns: -5,
+                                            child: Text('${model.widowsAgeAtBereavementChartData[value.toInt()].category} - ',textAlign: TextAlign.end,
+                                              style: const TextStyle(
+                                                fontSize: 12,
+                                              ),));
+                                      },showTitles: true)),
+                                  show: true,
+                                ),
+                                // maxY: 6,
+                                // minY: 1,
+                                // baselineY: 0,
+                                barGroups: model.widowsAgeAtBereavementChartData.map<BarChartGroupData>((e) =>  BarChartGroupData(x: model.widowsAgeAtBereavementChartData.indexOf(e),
+                                  barRods: [
+                                    BarChartRodData(
+                                        backDrawRodData: BackgroundBarChartRodData(
+                                            color: const Color(0xFF039CDD).withOpacity(0.1),
+                                            fromY: getGreatestValue(model.widowsAgeAtBereavementChartData).toDouble(),
+                                            show: true),
+                                        toY: e.y.toDouble(),
+                                        width: 10,
+                                        color: const Color(0xFF039CDD),
+                                        borderRadius: BorderRadius.circular(0)),
+                                  ],
+                                ),).toList(),
+                              ),
+                              swapAnimationDuration: const Duration(milliseconds: 150), // Optional
+                              swapAnimationCurve: Curves.linear, // Optional
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+
               ],
             ),
           ),
