@@ -11,29 +11,29 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<CategoryBarChartModel> chartData = [
-      CategoryBarChartModel(category: 'Owo', x: 7),
-      CategoryBarChartModel(category: 'Ose', x: 7),
-      CategoryBarChartModel(category: 'Ondo West', x: 6),
-      // CategoryBarChartModel(category: 'Ondo West', x: 3),
-      // CategoryBarChartModel(category: 'Ondo West', x: 3),
-      // CategoryBarChartModel(category: 'Ondo West', x: 3),
-      CategoryBarChartModel(category: 'Ondo East', x: 4),
-      CategoryBarChartModel(category: 'Okitipupa', x: 5),
-      CategoryBarChartModel(category: 'Odigbo', x: 8),
-      CategoryBarChartModel(category: 'Irele', x: 7),
-      CategoryBarChartModel(category: 'Ile Oluji/Oke Igbo', x: 6),
-      CategoryBarChartModel(category: 'Ilaje', x: 5),
-      CategoryBarChartModel(category: 'Ifedore', x: 2),
-      CategoryBarChartModel(category: 'Idanre', x: 3),
-      CategoryBarChartModel(category: 'Ese Odo', x: 5),
-      CategoryBarChartModel(category: 'Akure North', x: 7),
-      CategoryBarChartModel(category: 'Akoko S/W', x: 5),
-      CategoryBarChartModel(category: 'Akoko S/E', x: 6),
-      CategoryBarChartModel(category: 'Akoko N/W', x: 4),
-      CategoryBarChartModel(category: 'Akoko N/E', x: 5),
-      CategoryBarChartModel(category: 'Akure South', x: 5),
-    ];
+    // List<CategoryBarChartModel> chartData = [
+    //   CategoryBarChartModel(category: 'Owo', y: 7),
+    //   CategoryBarChartModel(category: 'Ose', y: 7),
+    //   CategoryBarChartModel(category: 'Ondo West', y: 6),
+    //   // CategoryBarChartModel(category: 'Ondo West', x: 3),
+    //   // CategoryBarChartModel(category: 'Ondo West', x: 3),
+    //   // CategoryBarChartModel(category: 'Ondo West', x: 3),
+    //   CategoryBarChartModel(category: 'Ondo East', y: 4),
+    //   CategoryBarChartModel(category: 'Okitipupa', y: 5),
+    //   CategoryBarChartModel(category: 'Odigbo', y: 8),
+    //   CategoryBarChartModel(category: 'Irele', y: 7),
+    //   CategoryBarChartModel(category: 'Ile Oluji/Oke Igbo', y: 6),
+    //   CategoryBarChartModel(category: 'Ilaje', y: 5),
+    //   CategoryBarChartModel(category: 'Ifedore', y: 2),
+    //   CategoryBarChartModel(category: 'Idanre', y: 3),
+    //   CategoryBarChartModel(category: 'Ese Odo', y: 5),
+    //   CategoryBarChartModel(category: 'Akure North', y: 7),
+    //   CategoryBarChartModel(category: 'Akoko S/W', y: 5),
+    //   CategoryBarChartModel(category: 'Akoko S/E', y: 6),
+    //   CategoryBarChartModel(category: 'Akoko N/W', y: 4),
+    //   CategoryBarChartModel(category: 'Akoko N/E', y: 5),
+    //   CategoryBarChartModel(category: 'Akure South', y: 5),
+    // ];
     return ViewModelBuilder<HomeViewModel>.reactive(
       onModelReady: (model) => model.readData(),
       viewModelBuilder: () => HomeViewModel(),
@@ -47,130 +47,130 @@ class HomeScreen extends StatelessWidget {
                   // width: 329,
                   padding: const EdgeInsets.only(top: 30),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        offset: const Offset(1,1),
-                        color: const Color(0xFF717171).withOpacity(0.20),
-                      ),
-                       BoxShadow(
-                        offset: const Offset(-1,-1),
-                        color: const Color(0xFF717171).withOpacity(0.20),
-                      ),
-                    ],
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(image: AssetImage(
-                      GraphAssets.blueGraph
-                    ))
+                      color: Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(1,1),
+                          color: const Color(0xFF717171).withOpacity(0.20),
+                        ),
+                        BoxShadow(
+                          offset: const Offset(-1,-1),
+                          color: const Color(0xFF717171).withOpacity(0.20),
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(image: AssetImage(
+                          GraphAssets.blueGraph
+                      ))
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText.body('TOTAL NUMBER OF WIDOWS REGISTERED'),
-                          Image.asset(GraphAssets.profileImage,
-                          // width: MediaQuery.of(context).size.width/3,
-                          // height: MediaQuery.of(context).size.height/8,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText.body('TOTAL NUMBER OF WIDOWS REGISTERED'),
+                              Image.asset(GraphAssets.profileImage,
+                                // width: MediaQuery.of(context).size.width/3,
+                                // height: MediaQuery.of(context).size.height/8,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 32.0),
-                      child: CustomText.headline('${model.graphDataList.map<String>((e) => e.lga??'').toList().length}'),
-                    ),
-                    // Image.asset(GraphAssets.blueGraph),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 8.0),
-                    //   child: CustomText.headline('125'),
-                    // )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 32.0),
+                          child: CustomText.headline('${model.graphDataList.map<String>((e) => e.lga??'').toList().length}'),
+                        ),
+                        // Image.asset(GraphAssets.blueGraph),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top: 8.0),
+                        //   child: CustomText.headline('125'),
+                        // )
 
-                  ]),
+                      ]),
                 ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 24,bottom: 32),
+                Container(
+                  margin: const EdgeInsets.only(top: 24,bottom: 32),
                   height: 154,
                   width: 329,
                   padding: const EdgeInsets.only(top: 30),
                   decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(image: AssetImage(
-                      GraphAssets.purpleGraph
-                    )),
-                    boxShadow: [
-                       BoxShadow(
-                        offset: const Offset(1,1),
-                        color: const Color(0xFF717171).withOpacity(0.20),
-                      ),
-                       BoxShadow(
-                        offset: const Offset(-1,-1),
-                        color: const Color(0xFF717171).withOpacity(0.20),
-                      ),
-                    ]
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      image: DecorationImage(image: AssetImage(
+                          GraphAssets.purpleGraph
+                      )),
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(1,1),
+                          color: const Color(0xFF717171).withOpacity(0.20),
+                        ),
+                        BoxShadow(
+                          offset: const Offset(-1,-1),
+                          color: const Color(0xFF717171).withOpacity(0.20),
+                        ),
+                      ]
                   ),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          CustomText.body('SELECT LOCAL GOVERNMENT'),
-                          Image.asset(GraphAssets.homeIconImage,
-                          // width: MediaQuery.of(context).size.width/3,
-                          // height: MediaQuery.of(context).size.height/8,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              CustomText.body('SELECT LOCAL GOVERNMENT'),
+                              Image.asset(GraphAssets.homeIconImage,
+                                // width: MediaQuery.of(context).size.width/3,
+                                // height: MediaQuery.of(context).size.height/8,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 32.0),
-                      child: CustomText.headline('${model.graphDataList.map<String>((e) => e.lga??'').toSet().length}'),
-                    ),
-                    // Image.asset(GraphAssets.blueGraph),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 8.0),
-                    //   child: CustomText.headline('125'),
-                    // )
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 32.0),
+                          child: CustomText.headline('${model.graphDataList.map<String>((e) => e.lga??'').toSet().length}'),
+                        ),
+                        // Image.asset(GraphAssets.blueGraph),
+                        // Padding(
+                        //   padding: const EdgeInsets.only(top: 8.0),
+                        //   child: CustomText.headline('125'),
+                        // )
 
 
-                  ]),
-                                ),
-                  SizedBox(
-                    height: 600,
-                    width: MediaQuery.of(context).size.width-68,
-                    child: Material(
-                      borderRadius: BorderRadius.circular(5.43),
-                      elevation: 1,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 24,),
-                        child: Column(
-                          children: [
-                            const Padding(
-                              padding: EdgeInsets.only(bottom: 16.0,top: 24),
-                              child: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
-                            ),
-                            Expanded(
-                              child: RotatedBox(
-                                quarterTurns: -3,
-                                child: BarChart(
+                      ]),
+                ),
+                SizedBox(
+                  height: 650,
+                  width: MediaQuery.of(context).size.width-68,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(5.43),
+                    elevation: 1,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24,),
+                      child: Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.only(bottom: 16.0,top: 24),
+                            child: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
+                          ),
+                          Expanded(
+                            child: RotatedBox(
+                              quarterTurns: -3,
+                              child: BarChart(
 
-                                  BarChartData(
-                                    borderData: FlBorderData(show: false,),
+                                BarChartData(
+                                  borderData: FlBorderData(show: false,),
                                   // alignment: BarChartAlignment.center,
                                   // groupsSpace: 30,
                                   titlesData: FlTitlesData(
                                     leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
                                     topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                                    rightTitles: AxisTitles(sideTitles: SideTitles(interval: 1,reservedSize: 90,getTitlesWidget: (value,meta) {
+                                    rightTitles: AxisTitles(sideTitles: SideTitles(interval: 92.4,reservedSize: 90,getTitlesWidget: (value,meta) {
                                       // log('${chartData[0]}');
                                       return RotatedBox(
                                           quarterTurns: -5,
@@ -181,15 +181,15 @@ class HomeScreen extends StatelessWidget {
                                     },showTitles: true)),
                                     bottomTitles: AxisTitles(
                                       // axisNameWidget: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
-                                    sideTitles: SideTitles(reservedSize: 90,getTitlesWidget: (value,meta) {
-                                      // log('${chartData[0]}');
-                                      return RotatedBox(
-                                          quarterTurns: -5,
-                                          child: Text('${chartData[value.toInt()].category} - ',textAlign: TextAlign.end,
-                                          style: const TextStyle(
-                                            fontSize: 12,
-                                          ),));
-                                    },showTitles: true)),
+                                        sideTitles: SideTitles(reservedSize: 100,getTitlesWidget: (value,meta) {
+                                          // log('${chartData[0]}');
+                                          return RotatedBox(
+                                              quarterTurns: -5,
+                                              child: Text('${model.chartData[value.toInt()].category} - ',textAlign: TextAlign.end,
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                ),));
+                                        },showTitles: true)),
                                     //   leftTitles: AxisTitles(
                                     //   // axisNameWidget: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
                                     // sideTitles: SideTitles(getTitlesWidget: (value,meta) => RotatedBox(
@@ -200,43 +200,43 @@ class HomeScreen extends StatelessWidget {
                                   // maxY: 6,
                                   // minY: 1,
                                   // baselineY: 0,
-                                  barGroups: chartData.map<BarChartGroupData>((e) =>  BarChartGroupData(x: chartData.indexOf(e),
+                                  barGroups: model.chartData.map<BarChartGroupData>((e) =>  BarChartGroupData(x: model.chartData.indexOf(e),
                                     barRods: [
                                       BarChartRodData(
                                           backDrawRodData: BackgroundBarChartRodData(
                                               color: const Color(0xFF602BF8).withOpacity(0.1),
-                                              fromY: getGreatestValue(chartData).toDouble(),
+                                              fromY: getGreatestValue(model.chartData).toDouble(),
                                               show: true),
-                                          toY: e.x.toDouble(),
+                                          toY: e.y.toDouble(),
                                           width: 10,
                                           color: const Color(0xFF602BF8),
                                           borderRadius: BorderRadius.circular(0)),
                                     ],
-                                    ),).toList(),
+                                  ),).toList(),
 
-                                    // barGroups: [
-                                    //   BarChartGroupData (x: 0, barRods: [
-                                    //     BarChartRodData(toY: chartData[0].x.toDouble()),
-                                    //   ]),
-                                    //   BarChartGroupData(x: 1,barRods: [
-                                    //     BarChartRodData(toY: chartData[1].x.toDouble()),
-                                    //   ]),
-                                    //   BarChartGroupData(x: 2,barRods: [
-                                    //     BarChartRodData(toY: chartData[2].x.toDouble()),
-                                    //   ]),
-                                    // ]
-                                    // read about it in the BarChartData section
-                                  ),
-                                  swapAnimationDuration: const Duration(milliseconds: 150), // Optional
-                                  swapAnimationCurve: Curves.linear, // Optional
-                                  ),
+                                  // barGroups: [
+                                  //   BarChartGroupData (x: 0, barRods: [
+                                  //     BarChartRodData(toY: chartData[0].x.toDouble()),
+                                  //   ]),
+                                  //   BarChartGroupData(x: 1,barRods: [
+                                  //     BarChartRodData(toY: chartData[1].x.toDouble()),
+                                  //   ]),
+                                  //   BarChartGroupData(x: 2,barRods: [
+                                  //     BarChartRodData(toY: chartData[2].x.toDouble()),
+                                  //   ]),
+                                  // ]
+                                  // read about it in the BarChartData section
+                                ),
+                                swapAnimationDuration: const Duration(milliseconds: 150), // Optional
+                                swapAnimationCurve: Curves.linear, // Optional
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
-                  )
+                  ),
+                )
               ],
             ),
           ),
@@ -244,8 +244,8 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
-  int getGreatestValue(List<CategoryBarChartModel> chartData){
-    List<int> listVal = chartData.map<int>((e) => e.x).toList();
+  double getGreatestValue(List<CategoryBarChartModel> chartData){
+    List<double> listVal = chartData.map<double>((e) => e.y.toDouble()).toList();
     listVal.sort();
     // log('length: ${listVal.toSet().length}\n lastVal: ${listVal.last}\nFirstVal: ${listVal.first}');
     return listVal.last;
@@ -253,13 +253,13 @@ class HomeScreen extends StatelessWidget {
 }
 class CategoryBarChartModel{
   String category;
-  int x;
-  CategoryBarChartModel({required this.category,required this.x});
+  double y;
+  CategoryBarChartModel({required this.category,required this.y});
   @override
   String toString() {
     // TODO: implement toString
     return """
     category: $category,
-    x: $x""";
+    x: $y""";
   }
 }
