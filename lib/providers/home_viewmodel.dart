@@ -171,7 +171,7 @@ class HomeViewModel extends BaseViewModel {
       // log('${graphDataList[0]}');
     widowsAgeAtBereavementChartData = await myPort(graphDataList,widowsAgeBereavementEvaluated)??[];
     occupationTypeChartData = await myPort(graphDataList,occupationTypeEvaluated)??[];
-   myPort(graphDataList,widowsAgeEvaluated)??[];
+   await myPort(graphDataList,widowsAgeEvaluated)??[];
 
     log('${widowsAgeAtBereavementChartData.length}');
       loadPage = false;
