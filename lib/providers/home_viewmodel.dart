@@ -123,7 +123,7 @@ void widowsAgeEvaluated(SendPort mySendPort) async {
     if (message is Map) {
       final myMessage = message['message'] as List<GraphData>;
       final SendPort mikeResponseSendPort = message['sendPort'];
-      List valueGotten = [];
+      List<CategoryBarChartModel> valueGotten = [];
       // Set widowsAge = myMessage.map((e) => e.widowsAgeAtSpouseBereavement??'').toSet();
       // log('Widows age length: ${widowsAge}');
       // for(var widowAge in widowsAge){
@@ -162,9 +162,7 @@ void widowsAgeEvaluated(SendPort mySendPort) async {
       // }
       // log('value gotten: ${valueGotten.last}');
 
-      // mikeResponseSendPort.send(valueGotten.map<CategoryBarChartModel>((value) {
-      //   return CategoryBarChartModel(category: value.occupationServicesType??'', y: myMessage.where((element) => element.occupationServicesType==value.occupationServicesType).toList().toSet().length.toDouble());
-      // }).toList());
+      mikeResponseSendPort.send(valueGotten);
     }
   }
 }
@@ -175,29 +173,8 @@ class HomeViewModel extends BaseViewModel {
   bool loadPage = false;
   List<GraphData> graphDataList = [];
   List<CategoryBarChartModel> occupationTypeChartData = [];
-  List<CategoryBarChartModel> widowsAgeAtBereavementChartData = [
-    // CategoryBarChartModel(category: 'Owo', y: 7),
-    // CategoryBarChartModel(category: 'Ose', y: 7),
-    // CategoryBarChartModel(category: 'Ondo West', y: 6),
-    // // CategoryBarChartModel(category: 'Ondo West', x: 3),
-    // // CategoryBarChartModel(category: 'Ondo West', x: 3),
-    // // CategoryBarChartModel(category: 'Ondo West', x: 3),
-    // CategoryBarChartModel(category: 'Ondo East', y: 4),
-    // CategoryBarChartModel(category: 'Okitipupa', y: 5),
-    // CategoryBarChartModel(category: 'Odigbo', y: 8),
-    // CategoryBarChartModel(category: 'Irele', y: 7),
-    // CategoryBarChartModel(category: 'Ile Oluji/Oke Igbo', y: 6),
-    // CategoryBarChartModel(category: 'Ilaje', y: 5),
-    // CategoryBarChartModel(category: 'Ifedore', y: 2),
-    // CategoryBarChartModel(category: 'Idanre', y: 3),
-    // CategoryBarChartModel(category: 'Ese Odo', y: 5),
-    // CategoryBarChartModel(category: 'Akure North', y: 7),
-    // CategoryBarChartModel(category: 'Akoko S/W', y: 5),
-    // CategoryBarChartModel(category: 'Akoko S/E', y: 6),
-    // CategoryBarChartModel(category: 'Akoko N/W', y: 4),
-    // CategoryBarChartModel(category: 'Akoko N/E', y: 5),
-    // CategoryBarChartModel(category: 'Akure South', y: 5),
-  ];
+  List<CategoryBarChartModel> widowsRegisteredChartData = [];
+  List<CategoryBarChartModel> widowsAgeAtBereavementChartData = [];
   // String? otp;
   // // final TextEditingController otpController = TextEditingController();
   // bool? isRegistering;
@@ -222,16 +199,20 @@ class HomeViewModel extends BaseViewModel {
       // log('chartDataLength: ${chartData[0].y}');
 
       // log('${graphDataList[0]}');
-    widowsAgeAtBereavementChartData = await myPort(graphDataList,widowsAgeBereavementEvaluated)??[];
+    widowsRegisteredChartData = await myPort(graphDataList,widowsAgeBereavementEvaluated)??[];
     occupationTypeChartData = await myPort(graphDataList,occupationTypeEvaluated)??[];
-   myPort(graphDataList,widowsAgeEvaluated)??[];
+    updateWidowsAge();
 
-    log('${widowsAgeAtBereavementChartData.length}');
+    log('${widowsRegisteredChartData.length}');
       loadPage = false;
       notifyListeners();
     // }catch(e){
     //   log('Error: $e');
     // }
+  }
+  void updateWidowsAge() async {
+    widowsAgeAtBereavementChartData =  await myPort(graphDataList,widowsAgeEvaluated)??[];
+    notifyListeners();
   }
 
 }
