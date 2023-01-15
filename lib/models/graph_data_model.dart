@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 class GraphData{
     // String? ngoName;
     String? fullName;
@@ -9,6 +10,9 @@ class GraphData{
     String? husbandBereavementDate;//To give the years spent as a widow
     String? dob;//to give the widows at spouse bereavement - subtraction
     String? occupationServicesType;
+
+    // String? get widowsAgeAtSpouseBereavement => DateFormat.d().add_yMMMM().format(DateTime.parse(dob??''));
+    int? get widowsAgeAtSpouseBereavement => DateFormat.d().add_yMMMM().parse(husbandBereavementDate?.replaceAll(',', '')??'').year-DateTime.parse(dob??'').year;
 
 GraphData({this.fullName,this.husbandOccupation,this.lga,this.employmentStatus,this.ngoName,this.ngoMembership,this.husbandBereavementDate,this.dob,this.occupationServicesType});
 
@@ -35,6 +39,7 @@ ngoMembership: $ngoMembership,
 husbandBereavementDate: $husbandBereavementDate,
 dob: $dob,
 occupationServicesType: $occupationServicesType,
+widowsAgeAtSpouseBereavement: $widowsAgeAtSpouseBereavement,
 """;
 
 }
