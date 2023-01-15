@@ -115,6 +115,59 @@ void occupationTypeEvaluated(SendPort mySendPort) async {
     }
   }
 }
+void widowsAgeEvaluated(SendPort mySendPort) async {
+
+  ReceivePort mikeReceivePort = ReceivePort();
+  mySendPort.send(mikeReceivePort.sendPort);
+  await for (var message in mikeReceivePort) {
+    if (message is Map) {
+      final myMessage = message['message'] as List<GraphData>;
+      final SendPort mikeResponseSendPort = message['sendPort'];
+      List valueGotten = [];
+      // Set widowsAge = myMessage.map((e) => e.widowsAgeAtSpouseBereavement??'').toSet();
+      // log('Widows age length: ${widowsAge}');
+      // for(var widowAge in widowsAge){
+        bool hasValue = false;
+        for(WidowAgeStage stage in WidowAgeStage.values){
+         if(stage==WidowAgeStage.lessThan20){
+           valueGotten.add(CategoryBarChartModel(category: '<20', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!<20:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.twentyTo24){
+           valueGotten.add(CategoryBarChartModel(category: '20-24', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>19&&element.widowsAgeAtSpouseBereavement!<25:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.twentyFiveTo29){
+           valueGotten.add(CategoryBarChartModel(category: '25-29', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>24&&element.widowsAgeAtSpouseBereavement!<30:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.thirtyTo34){
+           valueGotten.add(CategoryBarChartModel(category: '30-34', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>29&&element.widowsAgeAtSpouseBereavement!<35:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.thirtyFiveTo39){
+           valueGotten.add(CategoryBarChartModel(category: '35-39', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>34&&element.widowsAgeAtSpouseBereavement!<40:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.fortyTo44){
+           valueGotten.add(CategoryBarChartModel(category: '40-44', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>39&&element.widowsAgeAtSpouseBereavement!<45:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.fortyFiveTo49){
+           valueGotten.add(CategoryBarChartModel(category: '45-49', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>44&&element.widowsAgeAtSpouseBereavement!<50:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.fiftyTo54){
+           valueGotten.add(CategoryBarChartModel(category: '50-54', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>49&&element.widowsAgeAtSpouseBereavement!<55:false).toList().toSet().length.toDouble()));
+         }else if(stage==WidowAgeStage.fiftyFiveTo59){
+           valueGotten.add(CategoryBarChartModel(category: '55-59', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>54&&element.widowsAgeAtSpouseBereavement!<60:false).toList().toSet().length.toDouble()));
+         }else{
+           valueGotten.add(CategoryBarChartModel(category: '60+', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>59:false).toList().toSet().length.toDouble()));
+         }
+
+        }
+      log('valueGotten: $valueGotten');
+        // for(var value in myMessage){
+      //     if(widowAge<20){
+      // //       // log('true');
+      //        //       hasValue = true;
+      //     }
+        // }
+      // }
+      // log('value gotten: ${valueGotten.last}');
+
+      // mikeResponseSendPort.send(valueGotten.map<CategoryBarChartModel>((value) {
+      //   return CategoryBarChartModel(category: value.occupationServicesType??'', y: myMessage.where((element) => element.occupationServicesType==value.occupationServicesType).toList().toSet().length.toDouble());
+      // }).toList());
+    }
+  }
+}
 
 
 
@@ -171,7 +224,7 @@ class HomeViewModel extends BaseViewModel {
       // log('${graphDataList[0]}');
     widowsAgeAtBereavementChartData = await myPort(graphDataList,widowsAgeBereavementEvaluated)??[];
     occupationTypeChartData = await myPort(graphDataList,occupationTypeEvaluated)??[];
-   await myPort(graphDataList,widowsAgeEvaluated)??[];
+   myPort(graphDataList,widowsAgeEvaluated)??[];
 
     log('${widowsAgeAtBereavementChartData.length}');
       loadPage = false;
@@ -179,59 +232,6 @@ class HomeViewModel extends BaseViewModel {
     // }catch(e){
     //   log('Error: $e');
     // }
-  }
-  void widowsAgeEvaluated(SendPort mySendPort) async {
-
-    ReceivePort mikeReceivePort = ReceivePort();
-    mySendPort.send(mikeReceivePort.sendPort);
-    await for (var message in mikeReceivePort) {
-      if (message is Map) {
-        final myMessage = message['message'] as List<GraphData>;
-        final SendPort mikeResponseSendPort = message['sendPort'];
-        List valueGotten = [];
-        // Set widowsAge = myMessage.map((e) => e.widowsAgeAtSpouseBereavement??'').toSet();
-        // log('Widows age length: ${widowsAge}');
-        // for(var widowAge in widowsAge){
-        bool hasValue = false;
-        for(WidowAgeStage stage in WidowAgeStage.values){
-          if(stage==WidowAgeStage.lessThan20){
-            valueGotten.add(CategoryBarChartModel(category: '<20', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!<20:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.twentyTo24){
-            valueGotten.add(CategoryBarChartModel(category: '20-24', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>19&&element.widowsAgeAtSpouseBereavement!<25:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.twentyFiveTo29){
-            valueGotten.add(CategoryBarChartModel(category: '25-29', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>24&&element.widowsAgeAtSpouseBereavement!<30:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.thirtyTo34){
-            valueGotten.add(CategoryBarChartModel(category: '30-34', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>29&&element.widowsAgeAtSpouseBereavement!<35:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.thirtyFiveTo39){
-            valueGotten.add(CategoryBarChartModel(category: '35-39', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>34&&element.widowsAgeAtSpouseBereavement!<40:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.fortyTo44){
-            valueGotten.add(CategoryBarChartModel(category: '40-44', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>39&&element.widowsAgeAtSpouseBereavement!<45:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.fortyFiveTo49){
-            valueGotten.add(CategoryBarChartModel(category: '45-49', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>44&&element.widowsAgeAtSpouseBereavement!<50:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.fiftyTo54){
-            valueGotten.add(CategoryBarChartModel(category: '50-54', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>49&&element.widowsAgeAtSpouseBereavement!<55:false).toList().toSet().length.toDouble()));
-          }else if(stage==WidowAgeStage.fiftyFiveTo59){
-            valueGotten.add(CategoryBarChartModel(category: '55-59', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>54&&element.widowsAgeAtSpouseBereavement!<60:false).toList().toSet().length.toDouble()));
-          }else{
-            valueGotten.add(CategoryBarChartModel(category: '60+', y: myMessage.where((element) =>  element.widowsAgeAtSpouseBereavement!=null? element.widowsAgeAtSpouseBereavement!>59:false).toList().toSet().length.toDouble()));
-          }
-
-        }
-        log('valueGotten: $valueGotten');
-        // for(var value in myMessage){
-        //     if(widowAge<20){
-        // //       // log('true');
-        //        //       hasValue = true;
-        //     }
-        // }
-        // }
-        // log('value gotten: ${valueGotten.last}');
-
-        // mikeResponseSendPort.send(valueGotten.map<CategoryBarChartModel>((value) {
-        //   return CategoryBarChartModel(category: value.occupationServicesType??'', y: myMessage.where((element) => element.occupationServicesType==value.occupationServicesType).toList().toSet().length.toDouble());
-        // }).toList());
-      }
-    }
   }
 
 }
