@@ -235,14 +235,14 @@ class HomeScreen extends StatelessWidget {
                                      sectionsSpace: 0,
                                      sections: [
                                        // PieChartSectionData(value: 90,color: const Color(0xFF602BF8)),
-                                       PieChartSectionData(value: 30,color: const Color(0xFF039CDD).withOpacity(0.7),showTitle: false),
+                                       PieChartSectionData(value: model.graphDataList.where((element) => element.employmentStatus=='Pensioner').toList().length.toDouble(),color: const Color(0xFF039CDD).withOpacity(0.7),showTitle: false),
                                        // PieChartSectionData(value: 90,color: const Color(0xFF602BF8)),
-                                       PieChartSectionData(value: 30,color: const Color(0xFFFED500).withOpacity(0.51),showTitle: false),
-                                       PieChartSectionData(value: 90,color: const Color(0xFF602BF8),showTitle: false),
-                                       PieChartSectionData(value: 30,color: const Color(0xFFDC950A),showTitle: false),
+                                       PieChartSectionData(value: model.graphDataList.where((element) => element.employmentStatus=='Unemployed').toList().length.toDouble(),color: const Color(0xFFFED500).withOpacity(0.51),showTitle: false),
+                                       PieChartSectionData(value: model.graphDataList.where((element) => element.employmentStatus=='Pensioner').toList().length.toDouble(),color: const Color(0xFF602BF8),showTitle: false),
+                                       PieChartSectionData(value: model.graphDataList.where((element) => element.employmentStatus=='Self Employed').toList().length.toDouble(),color: const Color(0xFFDC950A),showTitle: false),
                                        // PieChartSectionData(value: 120,color: const Color(0xFF039CDD)),
-                                     ]
-                                   )
+                                     ],
+                                   ),
                                  ),
                                  const Align(alignment: Alignment.center,child: SizedBox(
                                      child: Text('WIDOWS EMPLOYMENT\nSTATUS',
@@ -293,8 +293,8 @@ class HomeScreen extends StatelessWidget {
                                 centerSpaceRadius: 0,
                                   sectionsSpace: 0,
                                   sections: [
-                                    PieChartSectionData(value: 150,color: const Color(0xFF602BF8),showTitle: false,radius: 100),
-                                    PieChartSectionData(value: 30,color: const Color(0xFF039CDD).withOpacity(0.67,),showTitle: false,radius: 100),
+                                    PieChartSectionData(value: model.graphDataList.where((element) => element.ngoMembership=='YES').toList().length.toDouble(),color: const Color(0xFF602BF8),showTitle: false,radius: 100),
+                                    PieChartSectionData(value: model.graphDataList.where((element) => element.ngoMembership=='NO').toList().length.toDouble(),color: const Color(0xFF039CDD).withOpacity(0.67,),showTitle: false,radius: 100),
                                     // PieChartSectionData(value: 120,color: const Color(0xFF039CDD)),
                                   ]
                               )
@@ -397,6 +397,63 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                    ): const Center(child: CircularProgressIndicator()),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 32.0),
+                  child: SizedBox(
+                    height: 450,
+                    width: MediaQuery.of(context).size.width-32,
+                    child: Material(
+                      borderRadius: BorderRadius.circular(5.43),
+                      elevation: 3,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 24,horizontal: 16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.only(bottom: 16.0,top: 24,),
+                              child: Text('WIDOWS TYPE OF OCCUPATION'),
+                            ),
+                            Expanded(
+                              child: LineChart(
+                               LineChartData(
+
+                                 titlesData: FlTitlesData(
+
+                                 ),
+                                 lineBarsData: [
+
+                                   LineChartBarData(
+                                     spots: [
+                                       FlSpot(20, 7),
+                                       FlSpot(20, 13),
+                                       FlSpot(20, 40),
+
+                                     ],
+                                     lineChartStepData: LineChartStepData(
+
+                                     )
+                                   ),
+                                   // LineChartBarData(
+                                   //   spots: [
+                                   //     FlSpot(7, 7),
+                                   //     // FlSpot(20, 13),
+                                   //     // FlSpot(20, 40),
+                                   //
+                                   //   ],
+                                   //   lineChartStepData: LineChartStepData(
+                                   //
+                                   //   )
+                                   // ),
+
+                                 ]
+                            ),),)
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 32.0),
                   child: SizedBox(
