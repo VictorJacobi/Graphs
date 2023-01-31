@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:graph_implementation/constants.dart';
 import 'package:graph_implementation/custom_widgets/custom_text.dart';
 import 'dart:developer';
 import 'package:graph_implementation/providers/home_viewmodel.dart';
@@ -38,6 +39,9 @@ class HomeScreen extends StatelessWidget {
       onModelReady: (model) => model.readData(),
       viewModelBuilder: () => HomeViewModel(),
       builder: (context,model,child) => Scaffold(
+        floatingActionButton: FloatingActionButton(
+          onPressed: model.printResult,
+        ),
         body: model.occupationTypeChartData.isNotEmpty&&model.widowsRegisteredChartData.isNotEmpty?SafeArea(
           child: SingleChildScrollView(
             child: Column(
@@ -412,42 +416,138 @@ class HomeScreen extends StatelessWidget {
                           children: [
                             const Padding(
                               padding: EdgeInsets.only(bottom: 16.0,top: 24,),
-                              child: Text('WIDOWS TYPE OF OCCUPATION'),
+                              child: Text('YEARS SPENT AS A WIDOW'),
                             ),
                             Expanded(
                               child: LineChart(
-                               LineChartData(
 
-                                 titlesData: FlTitlesData(
 
-                                 ),
-                                 lineBarsData: [
+                                LineChartData(
+                                  lineTouchData: LineTouchData(
+                                    touchTooltipData: LineTouchTooltipData(
+                                      tooltipBgColor: Colors.white,
+                                      fitInsideHorizontally: true,
+                                    ),
+                                    enabled: true,
+                                  ),
+                                  borderData: FlBorderData(show: false,),
+                                  titlesData: FlTitlesData(
+                                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                    leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                                    // leftTitles: AxisTitles(sideTitles: SideTitles(interval: getGreatestValue(model.occupationTypeChartData).toDouble()/7,reservedSize: 40,getTitlesWidget: (value,meta) {
+                                    //   // log('${chartData[0]}');
+                                    //   return Text('${value.toInt()}   - ',textAlign: TextAlign.end,
+                                    //     style: const TextStyle(
+                                    //       fontSize: 12,
+                                    //     ),);
+                                    // },showTitles: true)),
+                                    bottomTitles: AxisTitles(
+                                      // axisNameWidget: Text('WIDOWS REGISTERED BY LOCAL GOVERNMENT'),
+                                      sideTitles: SideTitles(interval: 1,
+                                          //     getTitlesWidget: (value,meta) {
+                                          //   // log('${chartData[0]}');
+                                          //   return Padding(
+                                          //     padding: const EdgeInsets.all(8.0),
+                                          //     child: SizedBox(
+                                          //       width: 30,
+                                          //       // height: 50,
+                                          //       child: Text('${model.occupationTypeChartData[value.toInt()].category} - ',textAlign: TextAlign.center,
+                                          //         style: const TextStyle(
+                                          //           fontSize: 12,
+                                          //         ),),
+                                          //     ),
+                                          //   );
+                                          // },
+                                          showTitles: true),
+                                    ),
+                                    show: true,
+                                  ),
+                                  lineBarsData:
+                                  [
 
-                                   LineChartBarData(
-                                     spots: [
-                                       FlSpot(20, 7),
-                                       FlSpot(20, 13),
-                                       FlSpot(20, 40),
+                                    LineChartBarData(
+                                      // t,
+                                        belowBarData:
+                                        BarAreaData(
+                                          show: true,
+                                          // fromIndex: 0, toIndex: 4,
 
-                                     ],
-                                     lineChartStepData: LineChartStepData(
+                                            gradient: LinearGradient(
+                                                begin: Alignment.topCenter,
+                                                end: Alignment.bottomCenter,
+                                                colors:[
+                                                  const Color(0xFF602BF8),
+                                                  const Color(0xFF602BF8).withOpacity(0.2),
+                                                  // const Color(0xFF602BF8).withOpacity(0.2),
+                                                  // const Color(0xFF602BF8).withOpacity(0.2),
+                                                  // const Color(0xFF602BF8),
+                                                  // const Color(0xFF602BF8),
+                                                  // Colors.green,
+                                                  // Colors.green,
+                                                ]
+                                            )
+                                        ),
 
-                                     )
-                                   ),
-                                   // LineChartBarData(
-                                   //   spots: [
-                                   //     FlSpot(7, 7),
-                                   //     // FlSpot(20, 13),
-                                   //     // FlSpot(20, 40),
-                                   //
-                                   //   ],
-                                   //   lineChartStepData: LineChartStepData(
-                                   //
-                                   //   )
-                                   // ),
+                                        color: const Color(0xFF602BF8),
+                                        barWidth: 0,
+                                        isCurved: true,
+                                        curveSmoothness: 0.03,
+                                        spots:
 
-                                 ]
-                            ),),)
+                                        model.yearsSpentAsWidowList.map<FlSpot>((e) => FlSpot(e.y,e.y)).toList(),
+                                        // [
+                                        //   FlSpot(0, 8),//
+                                        //   FlSpot(1, 6),
+                                        //   FlSpot(2, 7),
+                                        //   FlSpot(3, 11),
+                                        //   FlSpot(4, 7),
+                                        //   FlSpot(5, 5),
+                                        //   FlSpot(8, 11),
+                                        //   FlSpot(9, 8),
+                                        //   FlSpot(10, 11),
+                                        //   FlSpot(11, 8),
+                                        //   FlSpot(12, 7),
+                                        //   FlSpot(13, 20),
+                                        //   FlSpot(14, 32),
+                                        //   FlSpot(15, 8),
+                                        //   FlSpot(17, 7),
+                                        //   FlSpot(18, 20),
+                                        //   FlSpot(19, 28),
+                                        //   FlSpot(20, 8),
+                                        //
+                                        // ],
+                                        
+                                        lineChartStepData: LineChartStepData(
+
+                                        )
+                                    ),
+                                    // LineChartBarData(
+                                    //   spots: [
+                                    //     FlSpot(7, 7),
+                                    //     // FlSpot(20, 13),
+                                    //     // FlSpot(20, 40),
+                                    //
+                                    //   ],
+                                    //   lineChartStepData: LineChartStepData(
+                                    //
+                                    //   )
+                                    // ),
+
+                                  ],
+                                  // lineBarsData:[
+                                  //   LineChartBarData(
+                                  //     show: true,
+                                  //     // touchTooltipData:,
+                                  //     dotData: FlDotData(
+                                  //       show: true
+                                  //     ),
+                                  //
+                                  //   )
+                                  // ]
+                                )
+
+                            ),)
                           ],
                         ),
                       ),
