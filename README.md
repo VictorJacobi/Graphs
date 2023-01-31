@@ -11,7 +11,7 @@ The packages used in this project include:
 - [stacked](https://pub.dev/packages/fl_chart)
 - [stacked_hooks](https://pub.dev/packages/fl_chart)
 
-###Screenshots
+<h1>Screenshots</h1>
 
 <img src="/asset/images/screenshot1.png" alt="Alt text" title="Optional title" width="180" height="550">
 <img src="/asset/images/screenshot2.png" alt="Alt text" title="Optional title" width="180" height="550">
