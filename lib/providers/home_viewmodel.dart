@@ -8,10 +8,6 @@ import 'package:stacked/stacked.dart';
 import 'dart:developer';
 import 'package:graph_implementation/models/graph_data_model.dart';
 
-void heavyTask(List<GraphData> result) async{
-  // List<CategoryBarChartModel> chartData = result.map<CategoryBarChartModel>((value) => CategoryBarChartModel(category: value.lga??'', y: result.where((element) => element.lga==value.lga).toList().length.toDouble())).toList();
-}
-
 ///We have two functions - retrieved data(Mike's flow) and the sent data for processing (my flow)
 
 
