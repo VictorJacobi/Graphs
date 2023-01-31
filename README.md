@@ -1,11 +1,11 @@
-# graph_implementation
+# Graph Implementation
 
 A new Flutter project again.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
-
+<img src="/asset/images/blue_graph.png" alt="Alt text" title="Optional title">
 A few resources to get you started if this is your first Flutter project:
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
