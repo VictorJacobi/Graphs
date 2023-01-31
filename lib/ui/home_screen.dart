@@ -39,9 +39,9 @@ class HomeScreen extends StatelessWidget {
       onModelReady: (model) => model.readData(),
       viewModelBuilder: () => HomeViewModel(),
       builder: (context,model,child) => Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: model.printResult,
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: model.printResult,
+        // ),
         body: model.occupationTypeChartData.isNotEmpty&&model.widowsRegisteredChartData.isNotEmpty?SafeArea(
           child: SingleChildScrollView(
             child: Column(

@@ -1,16 +1,15 @@
 # Graph Implementation
 
-A new Flutter project again.
+This project is designed to train myself 
+on how to build/code out quality charts mainly with Fl_chart.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
-<img src="/asset/images/blue_graph.png" alt="Alt text" title="Optional title">
-A few resources to get you started if this is your first Flutter project:
+The packages used in this project include:
+- [fl_chart](https://pub.dev/packages/fl_chart)
+- [stacked_services](https://pub.dev/packages/fl_chart)
+- [stacked](https://pub.dev/packages/fl_chart)
+- [stacked_hooks](https://pub.dev/packages/fl_chart)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+##Screenshots
+<img src="/asset/images/screenshot1.png" alt="Alt text" title="Optional title">
