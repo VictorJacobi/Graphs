@@ -1,8 +1,7 @@
 # Graph Implementation with fl_chart
 
 
-## A fully functional example app given by the mobile dev community Akure to test how creative a developer is with
-##chart implementation.
+## A fully functional example app given by the mobile dev community Akure to test how creative a developer is with chart implementation.
 
 This project is designed to train myself
 on how to build/code out quality charts mainly with the fl_chart. Every part of this project is sample code which shows how
