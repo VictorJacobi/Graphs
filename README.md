@@ -12,4 +12,4 @@ The packages used in this project include:
 - [stacked_hooks](https://pub.dev/packages/fl_chart)
 
 ##Screenshots
-<img src="/asset/images/screenshot1.png" alt="Alt text" title="Optional title">
+<img src="./asset/images/screenshot1.png" alt="Alt text" title="Optional title">
