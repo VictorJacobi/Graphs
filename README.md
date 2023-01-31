@@ -5,7 +5,13 @@
 ##chart implementation.
 
 This project is designed to train myself
-on how to build/code out quality charts mainly with the fl_chart.
+on how to build/code out quality charts mainly with the fl_chart. Every part of this project is sample code which shows how
+to do the following:
+
+* Graph plotting
+* Read local json file of about 8mb linked to project
+* Auto populate the graph based on the data in the json file
+* Working with isolates or Multithreading in Dart
 
 The packages used in this project include:
 - [fl_chart](https://pub.dev/packages/fl_chart)
